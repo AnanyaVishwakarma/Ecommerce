@@ -5,8 +5,6 @@ dotenv.config();
 import "./db.js";
 import connection from './db.js';
 
-
-
 const app = express();
 
 app.use(cors());
