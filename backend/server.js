@@ -22,7 +22,9 @@ app.get("/products", (req, res) => {
 });
 
 app.get("/categories", (req,res)=>{
+    const query = "SELECT * from categories";
 
+    
 });
 
 app.listen(process.env.PORT || 5000, ()=>{
