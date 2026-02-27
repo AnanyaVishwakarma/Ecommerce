@@ -29,6 +29,7 @@ app.get("/categories", (req,res)=>{
         console.error("Error fetching categories:", err);
         return res.status(500).json({ error: "Databse error"});
     }
+    res.json(results);
     })
 });
 
