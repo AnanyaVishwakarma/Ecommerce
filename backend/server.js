@@ -21,6 +21,10 @@ app.get("/products", (req, res) => {
     })
 });
 
+app.get("/categories", (req,res)=>{
+
+});
+
 app.listen(process.env.PORT || 5000, ()=>{
     console.log("Server running")
 })
