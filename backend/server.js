@@ -26,7 +26,8 @@ app.get("/categories", (req,res)=>{
 
     connection.query(query, (err, results)=>{   
     if(err){
-        console.error("Error fetching categories:", err)
+        console.error("Error fetching categories:", err);
+        return res.status(500).json({ error: "Databse error"});
     }
     })
 });
