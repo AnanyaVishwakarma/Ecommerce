@@ -24,7 +24,7 @@ app.get("/products", (req, res) => {
 app.get("/categories", (req,res)=>{
     const query = "SELECT * from categories";
 
-    
+    connection.query("Error fetching categories:", err);
 });
 
 app.listen(process.env.PORT || 5000, ()=>{
