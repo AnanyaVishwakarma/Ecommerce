@@ -30,7 +30,7 @@ app.get("/categories", (req,res)=>{
         return res.status(500).json({ error: "Databse error"});
     }
     res.json(results);
-    })
+    });
 });
 
 app.listen(process.env.PORT || 5000, ()=>{
