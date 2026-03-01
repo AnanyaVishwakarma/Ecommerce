@@ -32,8 +32,6 @@ app.get("/categories", (req,res)=>{
     res.json(results);
     });
 });
-
-
 app.listen(process.env.PORT || 5000, ()=>{
     console.log("Server running")
 })
