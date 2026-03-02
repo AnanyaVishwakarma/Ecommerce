@@ -10,28 +10,34 @@ const app = express();
 app.use(cors());
 app.use(express.json());//allows backend to read JSON data from frontend
 app.get("/products", (req, res) => {
-    const query = "SELECT * from products";
+    const { category } = req.query;
+    let query = "SELECT * from products";
+    if (category) {
+        query += `WHERE category = ${category}`;
+        values.push;
+    }
+    console.log(query);
 
-    connection.query(query, (err, results)=>{
-        if(err){
+    connection.query(query, (err, results) => {
+        if (err) {
             console.log("Error fetching products.");
-            return res.status(500).json({error: "Database Error"});
+            return res.status(500).json({ error: "Database Error" });
         }
         res.send(results);
     })
 });
 
-app.get("/categories", (req,res)=>{
+app.get("/categories", (req, res) => {
     const query = "SELECT * from categories";
 
-    connection.query(query, (err, results)=>{   
-    if(err){
-        console.error("Error fetching categories:", err);
-        return res.status(500).json({ error: "Databse error"});
-    }
-    res.json(results);
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error("Error fetching categories:", err);
+            return res.status(500).json({ error: "Databse error" });
+        }
+        res.json(results);
     });
 });
-app.listen(process.env.PORT || 5000, ()=>{
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server running")
 })
