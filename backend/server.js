@@ -14,7 +14,7 @@ app.get("/products", (req, res) => {
     let query = "SELECT * from products";
     if (category) {
         query += `WHERE category = ${category}`;
-        values.push;
+        values.push(category);
     }
     console.log(query);
 
