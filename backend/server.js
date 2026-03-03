@@ -27,7 +27,7 @@ app.get("/products", (req, res) => {
         res.send(results);
     })
 });
-
+//route for the categories page
 app.get("/categories", (req, res) => {
     const query = "SELECT * from categories";
 
