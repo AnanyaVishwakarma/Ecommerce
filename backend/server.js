@@ -9,6 +9,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());//allows backend to read JSON data from frontend
+//route for the product page
 app.get("/products", (req, res) => {
     const { category } = req.query;
     let query = "SELECT * from products";
