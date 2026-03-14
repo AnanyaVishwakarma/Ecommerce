@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import CategoryFilter from './components/CategoryFilter';
 import ProductGrid from './components/ProductGrid';
@@ -11,7 +11,20 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [showEmpty, setShowEmpty] = useState(false);
 
-  const categories = [
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/categories")
+      .then(res => res.json())
+      .then(data => {
+        const formatted = [{ id: "all", name: "All" }, ...data];
+        setCategories(formatted);
+      })
+      .catch(err => console.log("Error loading categories", err));
+  }, []);//[] means run only once when component mounts
+
+  categories = [
     { id: 'all', label: 'All' },
     { id: 'electronics', label: 'Electronics' },
     { id: 'clothing', label: 'Clothing' },
@@ -19,7 +32,7 @@ export default function App() {
     { id: 'beauty', label: 'Beauty' },
   ];
 
-  const products = [
+  products = [
     { id: 1, name: 'Minimalist Watch', price: 149, category: 'electronics', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop' },
     { id: 2, name: 'Cotton T-Shirt', price: 29, category: 'clothing', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop' },
     { id: 3, name: 'Ceramic Vase', price: 85, category: 'home', image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop' },
