@@ -10,7 +10,6 @@ export default function App() {
   const [cartItems, setCartItems] = useState(0);
   const [loading, setLoading] = useState(false);
   const [showEmpty, setShowEmpty] = useState(false);
-
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
 
